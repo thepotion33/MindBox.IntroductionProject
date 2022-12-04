@@ -1,4 +1,6 @@
 ﻿using MindBox.FiguresLibrary.Models.Figures;
 
-var triangle1 = new Triangle(4, 9, 10);
-Console.WriteLine(Figure.GetArea(triangle1));
+// Write your debug code here:
+
+var circle = new Circle(3);
+Console.WriteLine(Figure.GetPerimeter(circle));

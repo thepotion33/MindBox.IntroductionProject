@@ -8,8 +8,14 @@ namespace MindBox.XUnitTests.FiguresLibrary.Tests
         [Fact]
         public void Test_Triangle_Initialization_With_Negative_Sides()
         {
-            Exception actualException = Assert.Throws<MathException>(() => new Triangle(-1, -2, -3));
-            Assert.Equal("Triangle side can't equal or less than zero", actualException.Message);
+            Exception actualException1 = Assert.Throws<MathException>(() => new Triangle(-1, -2, -3));
+            Assert.Equal("Triangle side can't equal or less than zero", actualException1.Message);
+
+            Exception actualException2 = Assert.Throws<MathException>(() => new Triangle(-1, 2, 1));
+            Assert.Equal("Triangle side can't equal or less than zero", actualException2.Message);
+
+            Exception actualException3 = Assert.Throws<MathException>(() => new Triangle(-1, -2, 3));
+            Assert.Equal("Triangle side can't equal or less than zero", actualException3.Message);
         }
 
         [Fact]
@@ -26,7 +32,15 @@ namespace MindBox.XUnitTests.FiguresLibrary.Tests
         public void Test_Triangle_Area_Calculation()
         {
             var triangle1 = new Triangle(4, 9, 10);
-            Assert.Equal(17.98d, Figure.GetArea(triangle1));
+            Assert.Equal(17.98, Figure.GetArea(triangle1));
+        }
+
+        [Fact]
+        public void Test_Triangle_Semi_Perimeter_Area_Calculation()
+        {
+            var triangle = new Triangle(1, 2, 3);
+            Exception actualException1 = Assert.Throws<MathException>(() => Figure.GetArea(triangle));
+            Assert.Equal("One of the sides of triangle is equal or more than semi perimeter", actualException1.Message);
         }
     }
 }
